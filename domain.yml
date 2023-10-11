@@ -3,31 +3,68 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - affirm
-  - deny
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - Saudacao
+  - Validardata
+  - informar_cep
+  - affirm
+  - deny
+  - get_cep_info
+
+actions:
+  - action_get_cep_info
+  - action_affirm  
+
+entities:
+  - cep
+
+slots:
+  cep:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: cep
 
 responses:
+
+  utter_ask_cep:
+    - text: "Por favor, digite o CEP que você gostaria de pesquisar."
+
+  utter_cep_info_not_found:
+    - text: "Não foi possível encontrar informações para o CEP fornecido."
+
   utter_greet:
-  - text: "Como vai voce?"
+    - text: "Olá! Como posso ajudar?"
+
+  utter_how_can_i_help:
+    - text: "Como posso ajudar?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_Saudacao:
+  - text: "Ola bem vindo a sky, voce deseja negociar sua divida?"
+    buttons:
+      - title: "Sim"
+        payload: '/affirm'
+      - title: "Não"
+        payload: '/deny'
+
 
   utter_did_that_help:
-  - text: "Did that help you?"
+    - text: "Did that help you?"
 
   utter_happy:
-  - text: "Great, carry on!"
+    - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "I am a bot, powered by Rasa."
 
 session_config:
   session_expiration_time: 60

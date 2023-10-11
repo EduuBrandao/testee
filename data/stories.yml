@@ -2,6 +2,18 @@ version: "3.1"
 
 stories:
 
+- story: Exemplo de uso de botões
+  steps:
+  - intent: Saudacao
+  - action: utter_Saudacao
+  - intent: affirm
+  - action: action_affirm  # Substitua isso pela action apropriada se necessário
+
+- story: Exemplo de uso de botões (Não)
+  steps:
+  - intent: Saudacao
+  - action: utter_Saudacao
+
 - story: happy path
   steps:
   - intent: greet
@@ -16,7 +28,6 @@ stories:
   - intent: mood_unhappy
   - action: utter_cheer_up
   - action: utter_did_that_help
-  - intent: affirm
   - action: utter_happy
 
 - story: sad path 2
@@ -26,5 +37,18 @@ stories:
   - intent: mood_unhappy
   - action: utter_cheer_up
   - action: utter_did_that_help
-  - intent: deny
   - action: utter_goodbye
+
+- story: Informação do CEP
+  steps:
+  - intent: Saudacao
+  - action: utter_Saudacao
+  - intent: informar_cep
+  - action: utter_ask_cep
+  - intent: get_cep_info  # Intenção para acionar a ação
+  - entities:
+    - cep: "12345-678"  # CEP fictício
+  - action: action_get_cep_info
+
+
+

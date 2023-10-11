@@ -17,6 +17,13 @@ nlu:
     - goodevening
     - good afternoon
 
+- intent: Saudacao
+  examples: |
+    - oi
+    - começar
+    - negociar
+
+
 - intent: goodbye
   examples: |
     - cu
@@ -89,3 +96,22 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: informar_cep
+  examples: |
+    - Qual é o CEP dessa região?
+    - Diga-me o CEP.
+    - Gostaria de informações sobre um CEP.
+    - Pode me ajudar com um CEP?
+    - Qual é o CEP de [uma localização específica]?
+    - Informações do CEP
+    - Código de Endereçamento Postal
+
+- intent: get_cep_info
+  examples: |
+    - 03967010
+    - Diga-me o CEP.
+    - Pode me ajudar com um CEP?
+    - Qual é o CEP de [uma localização específica]?
+
+    
