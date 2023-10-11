@@ -1,12 +1,12 @@
 import requests
+import spacy
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, EventType
 from typing import Text, Dict, Any, List
-
-# Resto do seu código...
-
-
+from flask import Flask
+from flask_cors import CORS
+from flask_cors import cross_origin
 
 
 class ActionGetCEPInfo(Action):
@@ -31,7 +31,6 @@ class ActionAffirm(Action):
         cep = "03967010"
 
         if cep:
-            # Chame a API ViaCEP
             url = f"https://viacep.com.br/ws/{cep}/json/"
             response = requests.get(url)
 
@@ -69,4 +68,29 @@ class ActionCaptureCPF(Action):
             dispatcher.utter_message("Desculpe, não consegui identificar um CPF na sua mensagem.")
 
         return [SlotSet("captured_cpf", captured_cpf)]
-    
+
+class ActionCheckName(Action):
+    def name(self) -> Text:
+        return "action_check_name"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        user_message = tracker.latest_message.get("text")
+
+        nlp = spacy.load("pt_core_news_sm")
+        doc = nlp(user_message)
+
+        name = None
+
+        for ent in doc.ents:
+            if ent.label_ == "PER":
+                name = ent.text
+                break
+
+        if name:
+            confirmation_message = f"Você digitou {name}, é isso mesmo?"
+        else:
+            confirmation_message = "Não consegui encontrar o seu nome."
+
+        dispatcher.utter_message(text=confirmation_message)
+
+        return []

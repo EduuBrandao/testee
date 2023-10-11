@@ -22,6 +22,10 @@ nlu:
     - oi
     - começar
     - negociar
+    - Negociar
+    - 1: Negociar
+    - negocia
+    - negoc
 
 
 - intent: goodbye
@@ -113,5 +117,31 @@ nlu:
     - Diga-me o CEP.
     - Pode me ajudar com um CEP?
     - Qual é o CEP de [uma localização específica]?
+   
+- intent: menu
+  examples: |
+    - Menu
+    - Menu principal
 
-    
+- intent: cliente
+  examples: |
+    - Informacoes Cliente
+    - Cliente info
+    - cliente
+    - Informaçoes clientes
+    - clientes informacoes
+    - quero informaçoes do cliente
+    - 2: informacoes cliente
+
+- intent: informar_nome
+  examples: |
+    - Meu nome é Eduardo
+    - Eduardo
+    - Chame-me de Eduardo
+    - Sou o Eduardo
+    - Eduardo é o meu nome
+    - Pode me chamar de Eduardo
+    - Eduardo é o que você pode me chamar
+    - O nome que você procura é Eduardo
+    - Eduardo, prazer em conhecê-lo
+    - Eduardo aqui

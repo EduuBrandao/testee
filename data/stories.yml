@@ -7,37 +7,36 @@ stories:
   - intent: Saudacao
   - action: utter_Saudacao
   - intent: affirm
-  - action: action_affirm  # Substitua isso pela action apropriada se necessário
+  - action: action_affirm 
 
 - story: Exemplo de uso de botões (Não)
   steps:
   - intent: Saudacao
   - action: utter_Saudacao
 
-- story: happy path
+- story: Nome do cliente
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - intent: cliente
+  - action: utter_cliente
+  - intent: informar_nome 
+  - action: action_check_name
 
-- story: sad path 1
+- story: Menu Cliente
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - action: utter_happy
+  - intent: menu
+  - action: utter_menu
+  - intent: cliente
+  - action: utter_cliente
+  - intent: informar_nome 
+  - action: action_check_name
 
-- story: sad path 2
+- story: Menu Negociar
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - action: utter_goodbye
+  - intent: menu
+  - action: utter_menu
+  - intent: Saudacao
+  - action: utter_Saudacao
+
 
 - story: Informação do CEP
   steps:
@@ -45,9 +44,9 @@ stories:
   - action: utter_Saudacao
   - intent: informar_cep
   - action: utter_ask_cep
-  - intent: get_cep_info  # Intenção para acionar a ação
+  - intent: get_cep_info 
   - entities:
-    - cep: "12345-678"  # CEP fictício
+    - cep: "12345-678"
   - action: action_get_cep_info
 
 

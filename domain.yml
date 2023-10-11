@@ -12,10 +12,14 @@ intents:
   - affirm
   - deny
   - get_cep_info
+  - menu
+  - cliente
+  - informar_nome
 
 actions:
   - action_get_cep_info
   - action_affirm  
+  - action_check_name 
 
 entities:
   - cep
@@ -28,6 +32,23 @@ slots:
         entity: cep
 
 responses:
+
+  utter_cliente:
+    - text: "Cliente por favor digite seu Nome"
+
+  utter_menu:
+  - text: "Ola bem vindo a sky, no que posso te ajudar?"
+    buttons:
+      - title: "Negociar"
+      - title: "Informacoes Cliente"
+
+  utter_Saudacao:
+  - text: "Ola bem vindo a sky, voce deseja negociar sua divida?"
+    buttons:
+      - title: "Sim"
+        payload: '/affirm'
+      - title: "Não"
+        payload: '/deny'
 
   utter_ask_cep:
     - text: "Por favor, digite o CEP que você gostaria de pesquisar."
@@ -44,15 +65,6 @@ responses:
   utter_cheer_up:
     - text: "Here is something to cheer you up:"
       image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_Saudacao:
-  - text: "Ola bem vindo a sky, voce deseja negociar sua divida?"
-    buttons:
-      - title: "Sim"
-        payload: '/affirm'
-      - title: "Não"
-        payload: '/deny'
-
 
   utter_did_that_help:
     - text: "Did that help you?"
