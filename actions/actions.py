@@ -49,7 +49,7 @@ class ActionDeny(Action):
         return "action_deny"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[EventType]:
-        dispatcher.utter_message("Entendi. Se você mudar de ideia, estou aqui para ajudar.")
+        dispatcher.utter_message("Ok. Se você mudar de ideia, estou aqui para ajudar :) .")
         return []
 
 
